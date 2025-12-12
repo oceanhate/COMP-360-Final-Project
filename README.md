@@ -1,6 +1,6 @@
 CONTRIBUTIONS:
 
--Andrea: Cave Generation, Fog, Dust Particles, "YOU WIN!" and "Find the Green ball to win" pop-up label
+-Andrea: Cave Generation, Arrow pointer, Fog, Dust Particles, Green egg, "YOU WON!" and "Find the GREEN EGG to win" pop-up label
 
 -Oscar:
 
