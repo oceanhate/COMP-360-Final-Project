@@ -1,0 +1,261 @@
+[gd_scene load_steps=34 format=3 uid="uid://crbn8f4utpgl5"]
+
+[ext_resource type="Texture2D" uid="uid://bwxqwuyhkctag" path="res://icon.svg" id="1_qvpis"]
+[ext_resource type="Shader" uid="uid://7l7fk2kf5cab" path="res://Shaders/OutlineShader.gdshader" id="2_dcwvj"]
+[ext_resource type="Texture2D" uid="uid://ha1hi243wxqm" path="res://Assets/TestTextures/pbr_mat/pbr_mat/Rock030_1K-JPG/Rock030_1K-JPG_NormalGL.jpg" id="3_gaqjs"]
+[ext_resource type="PackedScene" uid="uid://7n16wqjie2wa" path="res://CaveGeneration/CaveGenerator/CaveGenerator.tscn" id="4_2nwka"]
+[ext_resource type="Script" uid="uid://dvdm6eiv40kc7" path="res://addons/egg_generator/primitive_meshes/two_radii_egg.gd" id="5_fyehg"]
+[ext_resource type="Script" uid="uid://cq4pg4etp8rv4" path="res://win_area.gd" id="5_gaqjs"]
+[ext_resource type="Script" uid="uid://dype0mkkdf0l8" path="res://addons/FreeLookCamera.gd" id="5_r6w8k"]
+[ext_resource type="Script" uid="uid://dylkvc55mpx33" path="res://arrow_3d.gd" id="6_2nwka"]
+[ext_resource type="Shader" uid="uid://d2pwthyupe0tg" path="res://addons/egg_generator/shaders/speckled_egg_shader.gdshader" id="6_rdd1b"]
+[ext_resource type="PackedScene" uid="uid://b57e2yn2oqx23" path="res://Player/Player.tscn" id="8_2nwka"]
+[ext_resource type="Script" uid="uid://hibqxsgb5ge1" path="res://dust_particles.gd" id="9_r6w8k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7llj"]
+albedo_texture = ExtResource("1_qvpis")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74u7v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8re3b"]
+render_priority = 0
+shader = ExtResource("2_dcwvj")
+shader_parameter/outline_color = Color(0.393086, 0.393086, 0.393085, 1)
+shader_parameter/outline_width = 5.0
+shader_parameter/fade_start = 10.0
+shader_parameter/fade_end = 30.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjeqb"]
+next_pass = SubResource("ShaderMaterial_8re3b")
+albedo_texture = ExtResource("1_qvpis")
+normal_texture = ExtResource("3_gaqjs")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 150.0
+
+[sub_resource type="VoxelGeneratorFlat" id="VoxelGeneratorFlat_i7llj"]
+height = 100.0
+
+[sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_74u7v"]
+
+[sub_resource type="Environment" id="Environment_i7llj"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.529067, 0.529066, 0.529067, 1)
+reflected_light_source = 1
+tonemap_mode = 3
+glow_enabled = true
+glow_strength = 1.25
+glow_blend_mode = 1
+glow_hdr_threshold = 0.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+
+[sub_resource type="PrimitiveMesh" id="PrimitiveMesh_mlyc6"]
+resource_local_to_scene = false
+resource_name = ""
+lightmap_size_hint = Vector2i(0, 0)
+custom_aabb = AABB(0, 0, 0, 0, 0, 0)
+flip_faces = false
+add_uv2 = false
+uv2_padding = 2.0
+script = ExtResource("5_fyehg")
+length = 2.0
+rad_point = 0.42
+rad_blunt = 0.88
+pow_curve = 2.39
+segments_length = 16
+segments_around = 32
+metadata/_custom_type_script = "uid://dvdm6eiv40kc7"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aabf4"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_qf4x4"]
+noise = SubResource("FastNoiseLite_aabf4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wkfk2"]
+render_priority = 0
+shader = ExtResource("6_rdd1b")
+shader_parameter/noise_texture = SubResource("NoiseTexture3D_qf4x4")
+shader_parameter/base_colour = Color(0, 0.6042078, 0.12508869, 1)
+shader_parameter/speckle_colour = Color(1, 1, 1, 1)
+shader_parameter/noise_threshold = 0.39999998360857
+shader_parameter/soften_threshold = 0.00999999977648
+shader_parameter/blunt_increase = 0.0
+shader_parameter/blunt_range = 0.0
+shader_parameter/point_increase = 0.0
+shader_parameter/point_range = 0.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2nwka"]
+radius = 4.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_2nwka"]
+density = 0.1
+albedo = Color(0.3665946, 0.3665946, 0.36659458, 1)
+
+[sub_resource type="FontFile" id="FontFile_qvpis"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/30/0/ascent = 0.0
+cache/0/30/0/descent = 0.0
+cache/0/30/0/underline_position = 0.0
+cache/0/30/0/underline_thickness = 0.0
+cache/0/30/0/scale = 1.0
+cache/0/45/0/ascent = 0.0
+cache/0/45/0/descent = 0.0
+cache/0/45/0/underline_position = 0.0
+cache/0/45/0/underline_thickness = 0.0
+cache/0/45/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_dcwvj"]
+font = SubResource("FontFile_qvpis")
+font_size = 45
+outline_size = 8
+outline_color = Color(1, 0.3882353, 1, 1)
+
+[sub_resource type="FontFile" id="FontFile_2nwka"]
+cache/0/150/0/ascent = 0.0
+cache/0/150/0/descent = 0.0
+cache/0/150/0/underline_position = 0.0
+cache/0/150/0/underline_thickness = 0.0
+cache/0/150/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_r6w8k"]
+font = SubResource("FontFile_2nwka")
+font_size = 150
+font_color = Color(0.81867766, 0.2197203, 0.69151545, 1)
+outline_size = 20
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dcwvj"]
+albedo_color = Color(0.64733493, 0.29698506, 0.6989468, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_2nwka"]
+material = SubResource("StandardMaterial3D_dcwvj")
+size = Vector3(0.3, 0.5, 0.05)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2nwka"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 5, 10)
+direction = Vector3(0, 0, 0)
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+scale_min = 0.049999997
+scale_max = 0.099999994
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6w8k"]
+transparency = 1
+albedo_color = Color(0.28485027, 0.28485027, 0.28485027, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_3jkl7"]
+material = SubResource("StandardMaterial3D_r6w8k")
+
+[node name="TutorialScene" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_i7llj")
+size = Vector3(20, 1, 20)
+material = SubResource("StandardMaterial3D_74u7v")
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="." groups=["navmesh_source"]]
+material_override = SubResource("StandardMaterial3D_cjeqb")
+generator = SubResource("VoxelGeneratorFlat_i7llj")
+mesher = SubResource("VoxelMesherTransvoxel_74u7v")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 3, 3)
+visible = false
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i7llj")
+
+[node name="CaveGenerator" parent="." node_paths=PackedStringArray("direction_arrow", "voxel_terrain", "generation_start_marker") instance=ExtResource("4_2nwka")]
+direction_arrow = NodePath("../Player/Camera/Arrow3D")
+voxel_terrain = NodePath("../VoxelTerrain")
+generation_start_marker = NodePath("StartMarker")
+random_walk_length = 2000
+
+[node name="StartMarker" type="Marker3D" parent="CaveGenerator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="EndMarker" type="MeshInstance3D" parent="CaveGenerator"]
+mesh = SubResource("PrimitiveMesh_mlyc6")
+surface_material_override/0 = SubResource("ShaderMaterial_wkfk2")
+
+[node name="WinArea" type="Area3D" parent="CaveGenerator/EndMarker" node_paths=PackedStringArray("camera", "win_label")]
+script = ExtResource("5_gaqjs")
+camera = NodePath("../../../Player/Camera")
+win_label = NodePath("../../../UI/BigWinLabel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CaveGenerator/EndMarker/WinArea"]
+shape = SubResource("SphereShape3D_2nwka")
+
+[node name="CaveFog" type="FogVolume" parent="CaveGenerator"]
+size = Vector3(180, 180, 180)
+material = SubResource("FogMaterial_2nwka")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("5_r6w8k")
+
+[node name="VoxelViewer" type="VoxelViewer" parent="Camera3D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="WinLabel" type="Label" parent="UI"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Find the GREEN EGG to win!"
+label_settings = SubResource("LabelSettings_dcwvj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BigWinLabel" type="Label" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU WON!"
+label_settings = SubResource("LabelSettings_r6w8k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="." node_paths=PackedStringArray("voxel_terrain") instance=ExtResource("8_2nwka")]
+voxel_terrain = NodePath("../VoxelTerrain")
+
+[node name="Camera" parent="Player" index="2"]
+current = true
+
+[node name="Arrow3D" type="MeshInstance3D" parent="Player/Camera" index="1" node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, -2)
+visible = false
+skeleton = NodePath("../../../Camera3D")
+script = ExtResource("6_2nwka")
+target = NodePath("../../../CaveGenerator/EndMarker")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Camera/Arrow3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_2nwka")
+
+[node name="DustParticles" type="GPUParticles3D" parent="Player"]
+amount = 300
+lifetime = 3.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_2nwka")
+draw_pass_1 = SubResource("QuadMesh_3jkl7")
+script = ExtResource("9_r6w8k")
+
+[editable path="Player"]
