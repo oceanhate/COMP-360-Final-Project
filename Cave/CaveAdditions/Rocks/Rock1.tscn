@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx5jhkk5e8pwi"]
+
+[ext_resource type="PackedScene" uid="uid://bx8pugdt8whuf" path="res://Assets/BasicRock.glb" id="1_dbrft"]
+
+[node name="Rock1" type="Node3D"]
+
+[node name="BasicRock" parent="." instance=ExtResource("1_dbrft")]

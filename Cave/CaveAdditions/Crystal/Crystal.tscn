@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=4 uid="uid://c60b40cwfrhh4"]
+
+[ext_resource type="Script" uid="uid://c2tq6c5361te5" path="res://CaveAdditions/Crystal/Crystal.gd" id="1_vm13k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a45w"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.6752731, 0.22915906, 0.5698268, 0.3764706)
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.79939866, 0.11907811, 0.07690362, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vm13k"]
+material = SubResource("StandardMaterial3D_8a45w")
+radius = 0.125
+height = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_px4vv"]
+resource_local_to_scene = true
+_surfaces = [{
+"aabb": AABB(-0.173205, 1.49012e-08, -0.2, 0.34641, 0.855667, 0.4),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEACAAAAAIACAADAAAACAACAAkAAwAHAAQACgAIAAkAAwAIAAUABQAIAAoAAwAFAAcABwAGAAQABwAFAAYAAgAEAAsAAgALAAkACwAEAAYACgAJAAsABQALAAYABQAKAAsA"),
+"lods": [0.200318, PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIABQADAAAAAgAEAAYABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/38AAAAAAAD//5aV/z8AAAZxr94AAAAA//8AAP8/AAD//5aV/78AAP9/AAD//wAABnGv3v7/AAD//wAA/78AAAAAAAD/PwAA+Q7///8/AAAAAAAA/78AAPkO////vwAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_848x1"]
+resource_local_to_scene = true
+resource_name = "Crystal_Cylinder"
+_surfaces = [{
+"aabb": AABB(-0.173205, 1.49012e-08, -0.2, 0.34641, 0.855667, 0.4),
+"attribute_data": PackedByteArray("//+kwKnq/3////9/qeqkwKnqpMBU1f9/qer/f1TVpMBU1aTA/7//f1TV/3//v6TA/7+kwP9//3//v/9//3+kwJm6e/D/n+/Bmbpz0f+f////3///mfpz0f/f78GZ+nvwqar/f6mqpMBkhXvwZIVz0amqpMBUlf9/qar/f1SVpMBUlaTAVJX/f2TFc9FkxXvw"),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAAYAA4ADAAZABgAEAARABIAEQAQABoAGgAQABMAEQAaABsAHAAdAB4AHAAfAB0AIAANACEAIAAPAA0AIgAVABYAFQAiABQAFAAiACMAFQAUABcA"),
+"lods": [0.200318, PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEQAQABMAFAAVABYAFQAUABcA")],
+"material": SubResource("StandardMaterial3D_8a45w"),
+"primitive": 3,
+"uv_scale": Vector4(2, 1.98, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("/38AAAAAmuv//5aV/z/q7AZxr94AAG3t//8AAP8/duv//wAA/z//v///lpX/v/+///+Wlf8//7///wAA/7//v///AAD/v02VBnGv3v7/x53//5aV/7+gp/9/AAD//4iU/38AAP//wJcGca/eAAA66QZxr97+/3mh/38AAAAAZ+j//5aV/7+gxgZxr94AAKDG//+Wlf8/oMYGca/e/v+gxv9/AAD///8///8AAP8//z//fwAAAAD/P///AAD/v/8/+Q7///+/7Z0AAAAA/7+Wl/kO////v6DG+Q7///8/oMYAAAAA/78AwPkO////PwDA+Q7///+/AMAAAAAA/z8AwAAAAAD/P2zo+Q7///8/dOkAAAAA/z//PwAAAAD/v/8/HnF0C71WhSC1UYkko4AjAP9/AAD/fwAA/38AAP9/AAAtiPgh0I/MSZSSNVhyguoBKXxJ7/2gk+Y+b/+2/3///xnEDGIZxAxiGcQMYhnEDGIAAP9/AAD/fwAA/38AAP9/L3F3v/9///8ZxAxiGcQMYnqBCP16gQj9eoEI/XqBCP1ohg77RKQN5AAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_px4vv")
+
+[node name="Crystal" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_vm13k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.25)
+visible = false
+mesh = SubResource("CapsuleMesh_vm13k")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
+visible = false
+shadow_enabled = true
+
+[node name="Crystal2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="Crystal" type="MeshInstance3D" parent="Crystal2"]
+mesh = SubResource("ArrayMesh_848x1")
+skeleton = NodePath("")
