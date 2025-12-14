@@ -8,5 +8,5 @@ CONTRIBUTIONS:
 
 -Kabir:
 
--Kirat:
+-Kirat: Added metallic texture to the spider bot
 
