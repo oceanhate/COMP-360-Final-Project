@@ -13,5 +13,5 @@ CONTRIBUTIONS:
 
 -Kabir: Added audio and textures to the cave
 
--Kirat:
+-Kirat: Added metallic texture to the spider bot
 
