@@ -2,6 +2,7 @@ Used code and assets from the following projects:
 
 Procedural Cave Generation: https://www.youtube.com/watch?v=Vh7wgvHZQBg 
 Procedural Animation: https://www.youtube.com/watch?v=G_seJ2Yg1GA
+GoDot Egg model add-on: https://rhill.itch.io/godot-egg-tools?download#google_vignette
 
 CONTRIBUTIONS:
 
