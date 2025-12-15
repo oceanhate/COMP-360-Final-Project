@@ -11,7 +11,7 @@ CONTRIBUTIONS:
 
 -Hayden:
 
--Kabir:
+-Kabir: Added audio and textures to the cave
 
 -Kirat:
 
